@@ -1,5 +1,6 @@
 import { Plugin } from 'vite';
 import { createManifest, CreateManifestOptions } from './create';
+import { writeFileSync } from 'fs';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
   endpoint?: string,
@@ -15,11 +16,17 @@ function VitePluginCustomElementsManifest({
     name: 'vite-plugin-custom-elements-manifest',
     configureServer(server) {
       server.middlewares.use(endpoint, async (req, res, next) => {
-        const manifest = await createManifest(files, createManifestOptions);
+        const manifest = createManifest(files, createManifestOptions);
 
         res.end(JSON.stringify(manifest))
       })
     },
+    generateBundle(this, { dir }) {
+      const path = `${dir}${endpoint}`;
+      const manifest = createManifest(files, createManifestOptions);
+
+      writeFileSync(path, JSON.stringify(manifest));
+    }
   }
 }
 
