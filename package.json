@@ -1,0 +1,30 @@
+{
+  "name": "vite-plugin-custom-elements-manifest",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "dev": "npm run build -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest/issues"
+  },
+  "homepage": "https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest#readme",
+  "dependencies": {
+    "typescript": "^4.6.3",
+    "vite": "^2.9.6"
+  },
+  "devDependencies": {
+    "tsup": "^5.12.6"
+  }
+}
