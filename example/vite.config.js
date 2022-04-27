@@ -3,6 +3,8 @@ import VitePluginCustomElementsManifest from '../dist/index.js';
 
 export default defineConfig({
   plugins: [
-    VitePluginCustomElementsManifest()
+    VitePluginCustomElementsManifest({
+      files: ['./src/title-element.ts']
+    })
   ]
 })
