@@ -5,6 +5,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
@@ -22,10 +23,12 @@
   },
   "homepage": "https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest#readme",
   "dependencies": {
-    "typescript": "^4.6.3",
+    "@custom-elements-manifest/analyzer": "^0.5.7",
+    "typescript": "~4.3.2",
     "vite": "^2.9.6"
   },
   "devDependencies": {
+    "@types/node": "^17.0.29",
     "tsup": "^5.12.6"
   }
 }
