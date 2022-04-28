@@ -1,4 +1,4 @@
-const { execSync } = require('child_process');
+import { execSync } from  'child_process';
 const version = process.argv.at(2); 
 
 if (!version) {
@@ -6,5 +6,7 @@ if (!version) {
 }
 
 execSync(`chan release ${version}`);
-execSync(`npm version ${version}`);
+execSync(`git add .`);
+execSync(`npm version ${version} --force`);
+execSync('git push');
 execSync('git push --tags');
