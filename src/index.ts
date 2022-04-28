@@ -4,11 +4,13 @@ import { writeFileSync } from 'fs';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
   endpoint?: string,
+  output?: string,
   files?: string[],
 }
 
 function VitePluginCustomElementsManifest({
-  endpoint = '/custom-element.json',
+  endpoint = '/custom-elements.json',
+  output = 'custom-elements.json',
   files = [],
   ...createManifestOptions
 }: VitePluginCustomElementsManifestOptions = {}): Plugin {
@@ -22,7 +24,7 @@ function VitePluginCustomElementsManifest({
       })
     },
     generateBundle(this, { dir }) {
-      const path = `${dir}${endpoint}`;
+      const path = `${dir}/${output}`;
       const manifest = createManifest(files, createManifestOptions);
 
       writeFileSync(path, JSON.stringify(manifest));
