@@ -52,7 +52,7 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
   /**
    * Define where will be serve the manifest.
    * This option only work in development mode.
-   * @default '/custom-element.json'
+   * @default '/custom-elements.json'
    */
   endpoint?: string,
   /**
