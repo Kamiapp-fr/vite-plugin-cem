@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2022-04-28
+### Fixed
+- Fix error on build when dist output folder isn't create.
+
 ## [0.1.0] - 2022-04-28
 ### Added
 - Add these options :
@@ -20,5 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In `development` serve the manifest and rebuild it on the fly.
 - In `production` build the final manifest.
 
-[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/releases/tag/v0.1.0
