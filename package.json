@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-cem",
   "version": "0.1.0",
-  "description": "",
+  "description": "Custom elements manifest builder for Vitejs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -29,8 +29,8 @@
     "type": "git",
     "url": "git+https://github.com/Kamiapp-fr/vite-plugin-cem.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Emilien Leroy",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Kamiapp-fr/vite-plugin-cem/issues"
   },
