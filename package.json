@@ -10,7 +10,8 @@
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
     "example:build": "npm -C example run build",
-    "example:dev": "npm -C example run dev"
+    "example:dev": "npm -C example run dev",
+    "postinstall": "npm -C example install"
   },
   "repository": {
     "type": "git",
