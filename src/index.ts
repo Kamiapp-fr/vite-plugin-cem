@@ -3,8 +3,22 @@ import { createManifest, CreateManifestOptions } from './create';
 import { writeFileSync } from 'fs';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
+  /**
+   * Define where will be serve the manifest.
+   * This option only work in development mode.
+   * @default '/custom-element.json'
+   */
   endpoint?: string,
+  /**
+   * Define where will be build the final manifest.
+   * This option only work in production mode.
+   * @default 'custom-elements.json'
+   */
   output?: string,
+  /**
+   * Register files which will be used to build the manifest.
+   * @default [] 
+   */
   files?: string[],
 }
 

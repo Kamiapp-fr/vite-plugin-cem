@@ -9,10 +9,26 @@ import {
 } from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
   
 interface CreateManifestOptions {
+  /**
+   * Use the lit plugin to parse files
+   */
   lit?: boolean,
+  /**
+   * Use the fast plugin to parse files
+   */
   fast?: boolean,
+  /**
+   * Use the stencil plugin to parse files
+   */
   stencil?: boolean,
+  /**
+   * Use the catalyst plugin to parse files
+   */
   catalyst?: boolean,
+  /**
+   * Run the analyze builder in dev mode.
+   * @default false
+   */
   dev?: boolean,
 }
 
