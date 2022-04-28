@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-custom-elements-manifest",
+  "name": "vite-plugin-cem",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest.git"
+    "url": "git+https://github.com/Kamiapp-fr/vite-plugin-cem.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest/issues"
+    "url": "https://github.com/Kamiapp-fr/vite-plugin-cem/issues"
   },
-  "homepage": "https://github.com/Kamiapp-fr/vite-plugin-custom-elements-manifest#readme",
+  "homepage": "https://github.com/Kamiapp-fr/vite-plugin-cem#readme",
   "dependencies": {
     "@custom-elements-manifest/analyzer": "^0.5.7",
     "typescript": "~4.3.2",

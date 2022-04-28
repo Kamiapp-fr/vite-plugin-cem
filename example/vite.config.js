@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import VitePluginCustomElementsManifest from '../dist/index.js';
+import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 
 export default defineConfig({
   plugins: [

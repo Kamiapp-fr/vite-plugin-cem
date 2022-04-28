@@ -1,4 +1,4 @@
-# vite-plugin-custom-elements-manifest
+# vite-plugin-cem
 
 Build automaticaly the manifest of your custom-element. This plugin is use the [@custom-elements-manifest/analyzer](https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer) to build the manifest.
 
@@ -8,14 +8,14 @@ Build automaticaly the manifest of your custom-element. This plugin is use the [
 ## Install
 
 ```console
-$ npm install --save-dev vite-plugin-custom-elements-manifest
+$ npm install --save-dev vite-plugin-cem
 ```
 
 ## Usage
 
 ```js
 import { defineConfig } from 'vite'
-import VitePluginCustomElementsManifest from 'vite-plugin-custom-elements-manifest';
+import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 
 export default defineConfig({
   plugins: [
