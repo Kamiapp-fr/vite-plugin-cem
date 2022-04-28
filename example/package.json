@@ -14,6 +14,7 @@
     "vite-plugin-cem": "file:.."
   },
   "dependencies": {
+    "api-viewer-element": "^1.0.0-pre.3",
     "lit": "^2.2.2"
   }
 }
