@@ -9,6 +9,8 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
+    "test": "echo 'TODO'",
+    "lint": "echo 'TODO'",
     "example:build": "npm -C example run build",
     "example:dev": "npm -C example run dev",
     "postinstall": "npm -C example install"
@@ -29,6 +31,7 @@
     "vite": "^2.9.6"
   },
   "devDependencies": {
+    "@geut/chan": "^3.2.6",
     "@types/node": "^17.0.29",
     "tsup": "^5.12.6"
   }
