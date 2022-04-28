@@ -22,8 +22,7 @@
     "lint": "echo 'TODO'",
     "release": "node ./scripts/version",
     "example:build": "npm -C example run build",
-    "example:dev": "npm -C example run dev",
-    "postinstall": "npm -C example install"
+    "example:dev": "npm -C example run dev"
   },
   "repository": {
     "type": "git",
