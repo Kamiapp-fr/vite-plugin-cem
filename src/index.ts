@@ -1,6 +1,7 @@
 import { Plugin } from 'vite';
 import { createManifest, CreateManifestOptions } from './create';
-import { writeFileSync } from 'fs';
+import { join } from 'path';
+import { writeFileSync, mkdirSync } from 'fs';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
   /**
@@ -38,9 +39,10 @@ function VitePluginCustomElementsManifest({
       })
     },
     generateBundle(this, { dir }) {
-      const path = `${dir}/${output}`;
+      const path = join(dir, output);
       const manifest = createManifest(files, createManifestOptions);
 
+      mkdirSync(dir, { recursive: true });
       writeFileSync(path, JSON.stringify(manifest));
     }
   }
