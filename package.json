@@ -5,12 +5,22 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
     "test": "echo 'TODO'",
     "lint": "echo 'TODO'",
+    "release": "node ./scripts/version",
     "example:build": "npm -C example run build",
     "example:dev": "npm -C example run dev",
     "postinstall": "npm -C example install"
