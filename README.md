@@ -1,5 +1,9 @@
 # vite-plugin-cem
 
+[![CI/CD](https://github.com/Kamiapp-fr/vite-plugin-cem/actions/workflows/main.yml/badge.svg)](https://github.com/Kamiapp-fr/vite-plugin-cem/actions/workflows/main.yml)
+![npm](https://img.shields.io/npm/v/vite-plugin-cem)
+![GitHub](https://img.shields.io/github/license/kamiapp-fr/vite-plugin-cem)
+
 Build automaticaly the manifest of your custom-elements. This plugin use the [@custom-elements-manifest/analyzer](https://github.com/open-wc/custom-elements-manifest/tree/master/packages/analyzer) to build the manifest. Here is what the plugin does depending on the environnement.
 
 * **Development:** Serve the manifest and rebuild it on the fly.
