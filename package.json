@@ -19,7 +19,7 @@
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
     "test": "echo 'TODO'",
-    "lint": "echo 'TODO'",
+    "lint": "eslint .",
     "release": "node ./scripts/version",
     "example:build": "npm -C example run build",
     "example:dev": "npm -C example run dev"
@@ -42,6 +42,10 @@
   "devDependencies": {
     "@geut/chan": "^3.2.6",
     "@types/node": "^17.0.29",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "tsup": "^5.12.6"
   }
 }

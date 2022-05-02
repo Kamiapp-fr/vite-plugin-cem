@@ -1,5 +1,5 @@
-import { html, LitElement } from "lit";
-import { customElement, property } from 'lit/decorators.js'
+import { html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 /**
  * A title element.
@@ -15,6 +15,6 @@ export class TitleElement extends LitElement {
   render() {
     return html`
       <h1>${this.value || ''}</h1>
-    `
+    `;
   }
 }

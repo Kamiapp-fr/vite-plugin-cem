@@ -1,3 +1,3 @@
 import 'api-viewer-element';
-import './style.css'
-import './title-element'
+import './style.css';
+import './title-element';

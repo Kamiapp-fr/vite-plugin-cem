@@ -1,7 +1,7 @@
 import { Plugin } from 'vite';
-import { createManifest, CreateManifestOptions } from './create';
 import { join } from 'path';
 import { writeFileSync, mkdirSync } from 'fs';
+import { createManifest, CreateManifestOptions } from './create';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
   /**
@@ -18,7 +18,7 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
   output?: string,
   /**
    * Register files which will be used to build the manifest.
-   * @default [] 
+   * @default []
    */
   files?: string[],
 }
@@ -32,11 +32,11 @@ function VitePluginCustomElementsManifest({
   return {
     name: 'vite-plugin-custom-elements-manifest',
     configureServer(server) {
-      server.middlewares.use(endpoint, async (req, res, next) => {
+      server.middlewares.use(endpoint, async (req, res) => {
         const manifest = createManifest(files, createManifestOptions);
 
-        res.end(JSON.stringify(manifest))
-      })
+        res.end(JSON.stringify(manifest));
+      });
     },
     generateBundle(this, { dir }) {
       const path = join(dir, output);
@@ -44,8 +44,8 @@ function VitePluginCustomElementsManifest({
 
       mkdirSync(dir, { recursive: true });
       writeFileSync(path, JSON.stringify(manifest));
-    }
-  }
+    },
+  };
 }
 
 export default VitePluginCustomElementsManifest;

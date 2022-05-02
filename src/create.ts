@@ -1,13 +1,13 @@
 import { readFileSync } from 'fs';
-import { 
-  create, 
+import {
+  create,
   litPlugin,
   catalystPlugin,
   stencilPlugin,
   fastPlugin,
-  ts 
+  ts,
 } from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
-  
+
 interface CreateManifestOptions {
   /**
    * Use the lit plugin to parse files
@@ -34,7 +34,7 @@ interface CreateManifestOptions {
 
 function createModule(path: string) {
   const source = readFileSync(path).toString();
-  
+
   return ts.createSourceFile(
     path,
     source,
@@ -42,13 +42,13 @@ function createModule(path: string) {
     true,
   );
 }
-  
+
 function createManifest(paths: string[], {
   lit,
   fast,
   stencil,
   catalyst,
-  dev = false
+  dev = false,
 }: CreateManifestOptions = {}) {
   const plugins = [];
   const modules = paths.map(createModule);
@@ -68,7 +68,7 @@ function createManifest(paths: string[], {
   if (catalyst) {
     plugins.push(...catalystPlugin());
   }
-  
+
   return create({
     modules,
     plugins,
@@ -79,5 +79,5 @@ function createManifest(paths: string[], {
 export {
   createModule,
   createManifest,
-  CreateManifestOptions
-}
+  CreateManifestOptions,
+};
