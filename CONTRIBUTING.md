@@ -7,11 +7,18 @@ These steps will guide you through contributing to this project:
 - Fork the repo
 - Clone it and install dependencies
 
-```
+```console
 $ git clone https://github.com/<YOUR-USERNAME>/vite-plugin-cem
+$ cd vite-plugin-cem
 $ npm install
 ```
 
+You must also install the example project. This project allow you to test easly the plugin without setup an another project. To do this run these commands :
+
+```console
+$ cd example
+$ npm install
+```
 
 ### Develop
 
