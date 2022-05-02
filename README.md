@@ -96,3 +96,7 @@ interface CreateManifestOptions {
   dev?: boolean,
 }
 ```
+
+## Contribute
+
+We would love you for the contribution to ``vite-plugin-cem`` project, check the [CONTRIBUTING](./CONTRIBUTING.md) file for more info.
