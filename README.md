@@ -47,6 +47,38 @@ Using the [api-viewer-element](https://github.com/open-wc/api-viewer-element) in
 </body>
 ```
 
+### Plugins
+
+This plugin support `custom-elements-manifest/analyzer` plugins. You can get more information about these plugins [here](https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/). This is an example how to use plugins. 
+ 
+First install the plugin :
+
+```console
+$ npm install --save-dev cem-plugin-jsdoc-example
+```
+
+And register it using the ``plugins`` field :
+
+```js
+import { defineConfig } from 'vite'
+import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import { jsdocExamplePlugin } from 'cem-plugin-jsdoc-example';
+
+export default defineConfig({
+  plugins: [
+    VitePluginCustomElementsManifest({
+      files: ['./src/title-element.ts'],
+      lit: true,
+      plugins: [
+        jsdocExamplePlugin(),
+      ]
+    })
+  ]
+})
+```
+
+> Yes, it's *pluginsception* !
+
 ### Options
 
 This is all current options of the plugin :
@@ -94,6 +126,13 @@ interface CreateManifestOptions {
    * @default false
    */
   dev?: boolean,
+  /**
+   * Use ``custom-elements-manifest/analyzer`` plugins.
+   * Get more information about these plugins here:
+   * 
+   * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
+   */
+  plugins?: Plugin[], 
 }
 ```
 
