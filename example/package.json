@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "cem-plugin-jsdoc-example": "^0.0.9",
     "typescript": "^4.5.4",
     "vite": "^2.9.5",
     "vite-plugin-cem": "file:.."
