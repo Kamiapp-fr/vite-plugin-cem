@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
-import {
+import { Plugin } from '@custom-elements-manifest/analyzer';
+import { 
   create,
   litPlugin,
   catalystPlugin,
@@ -30,6 +31,13 @@ interface CreateManifestOptions {
    * @default false
    */
   dev?: boolean,
+  /**
+   * Use ``custom-elements-manifest/analyzer`` plugins.
+   * Get more information about these plugins here:
+   * 
+   * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
+   */
+  plugins?: Plugin[], 
 }
 
 function createModule(path: string) {
@@ -49,8 +57,8 @@ function createManifest(paths: string[], {
   stencil,
   catalyst,
   dev = false,
+  plugins = [],
 }: CreateManifestOptions = {}) {
-  const plugins = [];
   const modules = paths.map(createModule);
 
   if (lit) {
