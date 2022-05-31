@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { Plugin } from '@custom-elements-manifest/analyzer';
-import { 
+import {
   create,
   litPlugin,
   catalystPlugin,
@@ -34,10 +34,10 @@ interface CreateManifestOptions {
   /**
    * Use ``custom-elements-manifest/analyzer`` plugins.
    * Get more information about these plugins here:
-   * 
+   *
    * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
    */
-  plugins?: Plugin[], 
+  plugins?: Plugin[],
 }
 
 function createModule(path: string) {
