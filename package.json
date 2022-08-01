@@ -37,9 +37,9 @@
   },
   "homepage": "https://github.com/Kamiapp-fr/vite-plugin-cem#readme",
   "dependencies": {
-    "@custom-elements-manifest/analyzer": "^0.5.7",
+    "@custom-elements-manifest/analyzer": "^0.6.3",
     "typescript": "~4.3.2",
-    "vite": "^2.9.6"
+    "vite": "^3.0.4"
   },
   "devDependencies": {
     "@geut/chan": "^3.2.6",
