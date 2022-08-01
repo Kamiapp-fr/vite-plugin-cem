@@ -5,7 +5,8 @@
   },
   "include": [
     "src",
-    "example"
+    "example/lit-ts",
+    "example/vanilla-ts",
   ],
   "exclude": ["node_modules"]
 }

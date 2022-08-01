@@ -21,8 +21,10 @@
     "test": "echo 'TODO'",
     "lint": "eslint .",
     "release": "node ./scripts/version",
-    "example:build": "npm -C example run build",
-    "example:dev": "npm -C example run dev"
+    "vanilla:build": "npm -C example/vanilla-ts run build",
+    "vanilla:dev": "npm -C example/vanilla-ts run dev",
+    "lit:build": "npm -C example/lit-ts run build",
+    "lit:dev": "npm -C example/lit-ts run dev"
   },
   "repository": {
     "type": "git",
