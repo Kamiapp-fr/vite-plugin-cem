@@ -28,11 +28,13 @@ describe('#create', () => {
 
     it('should create a manifest for a lit web component', () => {
       const manifest = createManifest([litElement], {
-        lit: true
+        lit: true,
       });
 
       const [element] = manifest.modules;
-      const [{ name, tagName, description, superclass }] = element.declarations;
+      const [{
+        name, tagName, description, superclass,
+      }] = element.declarations;
 
       expect(manifest.modules.length).to.equal(1);
       expect(name).to.equal('MyElement');
@@ -50,15 +52,21 @@ describe('#create', () => {
           packageLinkPhase(params) {
             params.customElementsManifest.modules.forEach((module) => {
               module.declarations?.forEach((d) => {
+                // eslint-disable-next-line no-param-reassign
                 d.name = d.name.toUpperCase();
-              })
-            })
+              });
+            });
           },
-        }]
+        }],
       });
 
       const [element] = manifest.modules;
-      const [{ name, tagName, description, superclass }] = element.declarations;
+      const [{
+        name,
+        tagName,
+        description,
+        superclass,
+      }] = element.declarations;
 
       expect(manifest.modules.length).to.equal(1);
       expect(name).to.equal('MYELEMENT');
@@ -66,5 +74,5 @@ describe('#create', () => {
       expect(description).to.equal('An example element.');
       expect(superclass.name).to.equal('LitElement');
     });
-  })
+  });
 });
