@@ -45,11 +45,13 @@
   "devDependencies": {
     "@geut/chan": "^3.2.6",
     "@types/node": "^17.0.29",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "@vitest/coverage-istanbul": "^0.25.8",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "supertest": "^6.3.3",
     "tsup": "^5.12.6",
     "vitest": "^0.25.7"
   }
