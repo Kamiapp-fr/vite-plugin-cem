@@ -5,6 +5,8 @@
   },
   "include": [
     "src",
+    "test",
+    "vite.config.ts",
     "example/lit-ts",
     "example/vanilla-ts",
   ],
