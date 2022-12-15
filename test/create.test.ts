@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { createModule } from '../src/create';
+import { createManifest, createModule } from '../src/create';
 
 const litElement = './example/lit-ts/src/my-element.ts';
 
@@ -17,4 +17,54 @@ describe('#create', () => {
       expect(identifiers.lit).to.equal('lit');
     });
   });
+
+  describe('#createManifest', () => {
+    it('should create an empty manifest if no param is pass', () => {
+      const manifest = createManifest([]);
+
+      expect(manifest.schemaVersion).to.equal('1.0.0');
+      expect(manifest.modules.length).to.equal(0);
+    });
+
+    it('should create a manifest for a lit web component', () => {
+      const manifest = createManifest([litElement], {
+        lit: true
+      });
+
+      const [element] = manifest.modules;
+      const [{ name, tagName, description, superclass }] = element.declarations;
+
+      expect(manifest.modules.length).to.equal(1);
+      expect(name).to.equal('MyElement');
+      expect(tagName).to.equal('my-element');
+      expect(description).to.equal('An example element.');
+      expect(superclass.name).to.equal('LitElement');
+    });
+
+    it('should create a manifest with a custom plugin', () => {
+      const manifest = createManifest([litElement], {
+        lit: true,
+        dev: true,
+        plugins: [{
+          name: 'my-super-uppercase-plugin',
+          packageLinkPhase(params) {
+            params.customElementsManifest.modules.forEach((module) => {
+              module.declarations?.forEach((d) => {
+                d.name = d.name.toUpperCase();
+              })
+            })
+          },
+        }]
+      });
+
+      const [element] = manifest.modules;
+      const [{ name, tagName, description, superclass }] = element.declarations;
+
+      expect(manifest.modules.length).to.equal(1);
+      expect(name).to.equal('MYELEMENT');
+      expect(tagName).to.equal('my-element');
+      expect(description).to.equal('An example element.');
+      expect(superclass.name).to.equal('LitElement');
+    });
+  })
 });
