@@ -163,5 +163,35 @@ describe('#VitePluginCustomElementsManifest', () => {
       expect(description).to.equal('An example element.');
       expect(superclass.name).to.equal('LitElement');
     });
+
+    // eslint-disable-next-line max-len
+    // it('should append "custom-elements" to package.json matching the manifest name', async () => {
+    //   await build({
+    //     logLevel: 'silent',
+    //     build: {
+    //       lib: {
+    //         entry: litElement,
+    //         formats: ['es'],
+    //       },
+    //       rollupOptions: {
+    //         external: /^lit/,
+    //       },
+    //     },
+    //     plugins: [
+    //       VitePluginCustomElementsManifest({
+    //         output: 'my-custom-name.json',
+    //         files: [litElement],
+    //         packageJson: true,
+    //         lit: true,
+    //       }),
+    //     ],
+    //   });
+
+    //   const file = await readFile(path.resolve(litElement, '../package.json'));
+    //   const packageJson = JSON.parse(file.toString());
+    //   const { customElements } = packageJson;
+
+    //   expect(customElements).to.equal('./dist/my-custom-name.json');
+    // });
   });
 });

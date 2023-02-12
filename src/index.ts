@@ -1,7 +1,8 @@
 import { Plugin } from 'vite';
-import { join } from 'path';
-import { writeFileSync, mkdirSync } from 'fs';
-import { addCustomElementsPropertyToPackageJson } from '@custom-elements-manifest/analyzer/src/utils/cli-helpers.js';
+import {
+  join, posix, relative, sep,
+} from 'path';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { createManifest, CreateManifestOptions } from './create';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
@@ -53,7 +54,13 @@ function VitePluginCustomElementsManifest({
       writeFileSync(path, JSON.stringify(manifest));
 
       if (packageJson) {
-        addCustomElementsPropertyToPackageJson(path);
+        const packageJsonPath = `${process.cwd()}${sep}package.json`;
+        const pkg = JSON.parse(readFileSync(packageJsonPath).toString());
+        const relativePath = relative(process.cwd(), path);
+
+        pkg.customElements = relativePath.split(sep).join(posix.sep);
+
+        writeFileSync(packageJsonPath, `${JSON.stringify(pkg, null, 2)}\n`);
       }
     },
   };
