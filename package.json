@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs,esm",
     "dev": "npm run build -- --watch",
-    "test": "vitest",
+    "test": "vitest --no-watch",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",
     "release": "node ./scripts/version",

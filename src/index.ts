@@ -1,6 +1,8 @@
 import { Plugin } from 'vite';
-import { join } from 'path';
-import { writeFileSync, mkdirSync } from 'fs';
+import {
+  join, posix, relative, sep,
+} from 'path';
+import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { createManifest, CreateManifestOptions } from './create';
 
 export interface VitePluginCustomElementsManifestOptions extends CreateManifestOptions {
@@ -17,6 +19,11 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
    */
   output?: string,
   /**
+   * Add the custom-elements-manifest field to the package.json.
+   * @default false
+   */
+  packageJson?: boolean,
+  /**
    * Register files which will be used to build the manifest.
    * @default []
    */
@@ -26,6 +33,7 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
 function VitePluginCustomElementsManifest({
   endpoint = '/custom-elements.json',
   output = 'custom-elements.json',
+  packageJson = false,
   files = [],
   ...createManifestOptions
 }: VitePluginCustomElementsManifestOptions = {}): Plugin {
@@ -44,6 +52,16 @@ function VitePluginCustomElementsManifest({
 
       mkdirSync(dir, { recursive: true });
       writeFileSync(path, JSON.stringify(manifest));
+
+      if (packageJson) {
+        const packageJsonPath = `${process.cwd()}${sep}package.json`;
+        const pkg = JSON.parse(readFileSync(packageJsonPath).toString());
+        const relativePath = relative(process.cwd(), path);
+
+        pkg.customElements = relativePath.split(sep).join(posix.sep);
+
+        writeFileSync(packageJsonPath, `${JSON.stringify(pkg, null, 2)}\n`);
+      }
     },
   };
 }

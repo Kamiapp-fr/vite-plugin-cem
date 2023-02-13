@@ -1,5 +1,5 @@
 import { createServer, build } from 'vite';
-import { readFile, rm } from 'fs/promises';
+import { readFile, rm, writeFile } from 'fs/promises';
 import {
   afterAll,
   describe,
@@ -162,6 +162,37 @@ describe('#VitePluginCustomElementsManifest', () => {
       expect(tagName).to.equal('my-element');
       expect(description).to.equal('An example element.');
       expect(superclass.name).to.equal('LitElement');
+    });
+
+    it('should append "custom-elements" path to package.json', async () => {
+      const pkg = await readFile('./package.json');
+
+      await build({
+        logLevel: 'silent',
+        build: {
+          lib: {
+            entry: litElement,
+            formats: ['es'],
+          },
+          rollupOptions: {
+            external: /^lit/,
+          },
+        },
+        plugins: [
+          VitePluginCustomElementsManifest({
+            output: 'my-custom-name.json',
+            files: [litElement],
+            packageJson: true,
+            lit: true,
+          }),
+        ],
+      });
+
+      const file = await readFile('./package.json');
+      const { customElements } = JSON.parse(file.toString());
+
+      expect(customElements).to.equal('dist/my-custom-name.json');
+      writeFile('./package.json', pkg);
     });
   });
 });

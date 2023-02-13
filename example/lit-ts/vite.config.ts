@@ -16,6 +16,7 @@ export default defineConfig({
     VitePluginCustomElementsManifest({
       files: ['./src/my-element.ts'],
       lit: true,
+      packageJson: true,
     }),
   ],
 });
