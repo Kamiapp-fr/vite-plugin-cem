@@ -39,11 +39,13 @@
   "homepage": "https://github.com/Kamiapp-fr/vite-plugin-cem#readme",
   "dependencies": {
     "@custom-elements-manifest/analyzer": "^0.6.3",
+    "glob": "^8.1.0",
     "typescript": "~4.3.2",
     "vite": "^4.0.1"
   },
   "devDependencies": {
     "@geut/chan": "^3.2.6",
+    "@types/glob": "^8.0.1",
     "@types/node": "^17.0.29",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
