@@ -1,5 +1,5 @@
 import { createServer, build } from 'vite';
-import { readFile, rm } from 'fs/promises';
+import { readFile, rm, writeFile } from 'fs/promises';
 import {
   afterAll,
   describe,
@@ -164,34 +164,35 @@ describe('#VitePluginCustomElementsManifest', () => {
       expect(superclass.name).to.equal('LitElement');
     });
 
-    // eslint-disable-next-line max-len
-    // it('should append "custom-elements" to package.json matching the manifest name', async () => {
-    //   await build({
-    //     logLevel: 'silent',
-    //     build: {
-    //       lib: {
-    //         entry: litElement,
-    //         formats: ['es'],
-    //       },
-    //       rollupOptions: {
-    //         external: /^lit/,
-    //       },
-    //     },
-    //     plugins: [
-    //       VitePluginCustomElementsManifest({
-    //         output: 'my-custom-name.json',
-    //         files: [litElement],
-    //         packageJson: true,
-    //         lit: true,
-    //       }),
-    //     ],
-    //   });
+    it('should append "custom-elements" path to package.json', async () => {
+      const pkg = await readFile('./package.json');
 
-    //   const file = await readFile(path.resolve(litElement, '../package.json'));
-    //   const packageJson = JSON.parse(file.toString());
-    //   const { customElements } = packageJson;
+      await build({
+        logLevel: 'silent',
+        build: {
+          lib: {
+            entry: litElement,
+            formats: ['es'],
+          },
+          rollupOptions: {
+            external: /^lit/,
+          },
+        },
+        plugins: [
+          VitePluginCustomElementsManifest({
+            output: 'my-custom-name.json',
+            files: [litElement],
+            packageJson: true,
+            lit: true,
+          }),
+        ],
+      });
 
-    //   expect(customElements).to.equal('./dist/my-custom-name.json');
-    // });
+      const file = await readFile('./package.json');
+      const { customElements } = JSON.parse(file.toString());
+
+      expect(customElements).to.equal('dist/my-custom-name.json');
+      writeFile('./package.json', pkg);
+    });
   });
 });
