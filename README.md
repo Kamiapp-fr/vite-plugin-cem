@@ -98,7 +98,13 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
    */
   output?: string,
   /**
+   * Add the custom-elements-manifest field to the package.json.
+   * @default false
+   */
+  packageJson?: boolean,
+  /**
    * Register files which will be used to build the manifest.
+   * You can use pattern to find files.
    * @default [] 
    */
   files?: string[],
