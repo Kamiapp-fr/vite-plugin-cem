@@ -1,3 +1,4 @@
+import glob from 'glob';
 import { readFileSync } from 'fs';
 import { Plugin } from '@custom-elements-manifest/analyzer';
 import {
@@ -59,7 +60,8 @@ function createManifest(paths: string[], {
   dev = false,
   plugins = [],
 }: CreateManifestOptions = {}) {
-  const modules = paths.map(createModule);
+  const files = paths.map((p) => glob.sync(p)).flat();
+  const modules = files.map(createModule);
 
   if (lit) {
     plugins.push(...litPlugin());

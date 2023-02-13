@@ -43,6 +43,24 @@ describe('#create', () => {
       expect(superclass.name).to.equal('LitElement');
     });
 
+    it('should create a manifest using a pattern', () => {
+      const manifest = createManifest(['./example/lit-ts/src/**/*.ts'], {
+        lit: true,
+      });
+
+      const [element] = manifest.modules;
+      const [{
+        name, tagName, description, superclass,
+      }] = element.declarations;
+
+      // It also match the vite-env.d.ts
+      expect(manifest.modules.length).to.equal(2);
+      expect(name).to.equal('MyElement');
+      expect(tagName).to.equal('my-element');
+      expect(description).to.equal('An example element.');
+      expect(superclass.name).to.equal('LitElement');
+    });
+
     it('should create a manifest with a custom plugin', () => {
       const manifest = createManifest([litElement], {
         lit: true,
