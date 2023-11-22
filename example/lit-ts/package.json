@@ -17,12 +17,11 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "lit": "^2.2.7",
+    "lit": "^3.1.0",
     "vite-plugin-cem": "file:../.."
   },
   "devDependencies": {
-    "typescript": "^4.6.4",
-    "vite": "^4.0.1"
-  },
-  "customElements": "dist/custom-elements.json"
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2"
+  }
 }
