@@ -8,6 +8,7 @@
     "build": "storybook build"
   },
   "dependencies": {
+    "cem-plugin-better-lit-types": "^0.2.0",
     "lit": "^3.0.2",
     "vite-plugin-cem": "file:../.."
   },
