@@ -1,15 +1,16 @@
-import type { Preview } from "@storybook/web-components";
+import { createArgsExtractor, createLitRenderer } from 'cem-plugin-better-lit-types/storybook'
+import custom from 'virtual:vite-plugin-cem/custom-elements-manifest';
 
-const preview: Preview = {
-  parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
-};
-
-export default preview;
+export const parameters = {
+  docs: {
+    extractArgTypes: createArgsExtractor(custom),
+  }
+}
+    
+/**
+ * Custom renderer made specially for LitComponents  
+ */
+export const render = createLitRenderer({
+  wrapSlots: true, // Wraps a non-default slot in `<span slot="name">`
+  joinArrays: true,  // Converts array to a comma-separated string
+})
