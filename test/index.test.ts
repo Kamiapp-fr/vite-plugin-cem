@@ -9,6 +9,7 @@ import {
 import request from 'supertest';
 import VitePluginCustomElementsManifest from '../src';
 
+const port = 5000;
 const litElement = './example/lit-ts/src/my-element.ts';
 
 describe('#VitePluginCustomElementsManifest', () => {
@@ -16,9 +17,13 @@ describe('#VitePluginCustomElementsManifest', () => {
     it('should serve an empty manifest', async () => {
       const server = await createServer({
         plugins: [VitePluginCustomElementsManifest()],
+        server: {
+          port,
+          host: true,
+        },
       });
 
-      await server.listen(5000);
+      await server.listen();
 
       const { text } = await request(server!.httpServer).get('/custom-elements.json');
       const manifest = JSON.parse(text);
@@ -34,9 +39,13 @@ describe('#VitePluginCustomElementsManifest', () => {
           files: [litElement],
           lit: true,
         })],
+        server: {
+          port,
+          host: true,
+        },
       });
 
-      await server.listen(5000);
+      await server.listen();
 
       const { text } = await request(server!.httpServer).get('/custom-elements.json');
       const manifest = JSON.parse(text);
@@ -64,9 +73,13 @@ describe('#VitePluginCustomElementsManifest', () => {
           files: [litElement],
           lit: true,
         })],
+        server: {
+          port,
+          host: true,
+        },
       });
 
-      await server.listen(5000);
+      await server.listen();
 
       const { text } = await request(server!.httpServer).get('/my-custom-endpoint');
       const manifest = JSON.parse(text);
