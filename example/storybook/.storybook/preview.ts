@@ -1,9 +1,9 @@
 import { createArgsExtractor, createLitRenderer } from 'cem-plugin-better-lit-types/storybook'
-import custom from 'virtual:vite-plugin-cem/custom-elements-manifest';
+import manifest from 'virtual:vite-plugin-cem/custom-elements-manifest';
 
 export const parameters = {
   docs: {
-    extractArgTypes: createArgsExtractor(custom),
+    extractArgTypes: createArgsExtractor(manifest),
   }
 }
     

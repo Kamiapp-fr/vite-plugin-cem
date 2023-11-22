@@ -9,7 +9,8 @@
     "vite.config.ts",
     "example/lit-ts",
     "example/vanilla-ts",
-    "example/storybook"
+    "example/storybook",
+    "virtual.d.ts"
   ],
   "exclude": ["node_modules"]
 }
