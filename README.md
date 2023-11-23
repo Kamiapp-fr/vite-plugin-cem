@@ -79,6 +79,47 @@ export default defineConfig({
 
 > Yes, it's *pluginsception* !
 
+### Virtual import
+
+You can employ virtual import to seamlessly utilize the manifest built into your code. To achieve this, simply include the following line: 
+
+```ts
+import manifest from 'virtual:vite-plugin-cem/custom-elements-manifest';
+```
+
+#### Storybook Integration
+
+For direct integration of your custom element with Storybook, utilize the following virtual import:
+
+```ts
+// .storybook/preview.ts
+import { setCustomElementsManifest } from '@storybook/web-components'
+import manifest from 'virtual:vite-plugin-cem/custom-elements-manifest';
+
+setCustomElementsManifest(manifest)
+```
+
+#### Storybook with cem-plugin-better-lit-types
+
+If you're leveraging the ``cem-plugin-better-lit-types`` plugin, enhance your Storybook integration with the following code:
+
+```ts
+// .storybook/preview.ts
+import { createArgsExtractor, createLitRenderer } from 'cem-plugin-better-lit-types/storybook'
+import manifest from 'virtual:vite-plugin-cem/custom-elements-manifest';
+
+export const parameters = {
+  docs: {
+    extractArgTypes: createArgsExtractor(manifest),
+  }
+}
+
+export const render = createLitRenderer({
+  wrapSlots: true,
+  joinArrays: true,
+})
+```
+
 ### Options
 
 This is all current options of the plugin :

@@ -38,6 +38,9 @@ function VitePluginCustomElementsManifest({
   files = [],
   ...createManifestOptions
 }: VitePluginCustomElementsManifestOptions = {}): Plugin {
+  const virtualModuleId = 'virtual:vite-plugin-cem/custom-elements-manifest';
+  const resolvedVirtualModuleId = `\0${virtualModuleId}`;
+
   return {
     name: 'vite-plugin-custom-elements-manifest',
     configureServer(server) {
@@ -63,6 +66,30 @@ function VitePluginCustomElementsManifest({
 
         writeFileSync(packageJsonPath, `${JSON.stringify(pkg, null, 2)}\n`);
       }
+    },
+    resolveId(id) {
+      if (id !== virtualModuleId) {
+        return undefined;
+      }
+
+      return resolvedVirtualModuleId;
+    },
+    load(id) {
+      if (id !== resolvedVirtualModuleId) {
+        return undefined;
+      }
+
+      const manifest = createManifest(files, createManifestOptions);
+      return `export default ${JSON.stringify(manifest)}`;
+    },
+    async handleHotUpdate({ server }) {
+      const mod = await server.moduleGraph.getModuleByUrl(resolvedVirtualModuleId);
+
+      if (!mod) {
+        return;
+      }
+
+      server.reloadModule(mod);
     },
   };
 }
