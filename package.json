@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-cem",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Custom elements manifest builder for Vitejs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
