@@ -9,6 +9,9 @@ import {
   fastPlugin,
   ts,
 } from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
+import type { SourceFile } from 'typescript';
+
+type Typescript = typeof import('typescript');
 
 interface CreateManifestOptions {
   /**
@@ -39,6 +42,18 @@ interface CreateManifestOptions {
    * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
    */
   plugins?: Plugin[],
+  /**
+   * Custom override for source file creation in module generation.
+   * For more details on this feature, refer to:
+   *
+   * https://custom-elements-manifest.open-wc.org/analyzer/plugins/authoring/#overriding-sourcefile-creation
+   *
+   * @param {Object} options - The options object.
+   * @param {Typescript} options.ts - The TypeScript instance.
+   * @param {string[]} options.globs - An array of glob patterns.
+   * @returns {SourceFile[]} An array of SourceFile.
+   */
+  overrideModuleCreation?: ({ ts, globs }: { ts: Typescript, globs: string[] }) => SourceFile[];
 }
 
 function createModule(path: string) {
@@ -49,7 +64,7 @@ function createModule(path: string) {
     source,
     ts.ScriptTarget.ES2015,
     true,
-  );
+  ) as SourceFile;
 }
 
 function createManifest(paths: string[], {
@@ -59,9 +74,14 @@ function createManifest(paths: string[], {
   catalyst,
   dev = false,
   plugins = [],
+  overrideModuleCreation,
 }: CreateManifestOptions = {}) {
-  const files = paths.map((p) => glob.sync(p)).flat();
-  const modules = files.map(createModule);
+  const useCustomModuleCreation = overrideModuleCreation !== undefined;
+  const files = paths.map((p) => glob.sync(p, { absolute: useCustomModuleCreation })).flat();
+
+  const modules = useCustomModuleCreation
+    ? overrideModuleCreation({ ts, globs: files })
+    : files.map(createModule);
 
   if (lit) {
     plugins.push(...litPlugin());

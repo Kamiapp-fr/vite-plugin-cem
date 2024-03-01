@@ -1,0 +1,20 @@
+{
+  "name": "lit-expanded-types",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "cem-plugin-expanded-types": "^1.2.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.4",
+    "vite-plugin-cem": "file:../.."
+  },
+  "dependencies": {
+    "lit": "^3.1.2"
+  }
+}

@@ -1,4 +1,9 @@
-import { describe, it, expect } from 'vitest';
+import {
+  describe,
+  it,
+  expect,
+  vi,
+} from 'vitest';
 import { createManifest, createModule } from '../src/create';
 
 const litElement = './example/lit-ts/src/my-element.ts';
@@ -11,7 +16,7 @@ describe('#create', () => {
 
     it('should create a module for a web component', () => {
       const module = createModule(litElement);
-      const identifiers = Object.fromEntries(module.identifiers);
+      const identifiers = Object.fromEntries((module as any).identifiers);
 
       expect(identifiers['my-element']).to.equal('my-element');
       expect(identifiers.lit).to.equal('lit');
@@ -91,6 +96,29 @@ describe('#create', () => {
       expect(tagName).to.equal('my-element');
       expect(description).to.equal('An example element.');
       expect(superclass.name).to.equal('LitElement');
+    });
+
+    it('should create a manifest with the overrideModuleCreation option', () => {
+      const options = {
+        lit: true,
+        overrideModuleCreation({ globs }: { globs: string[] }) {
+          return globs.map(createModule);
+        },
+      };
+
+      const spy = vi.spyOn(options, 'overrideModuleCreation');
+      const manifest = createManifest([litElement], options);
+
+      const [element] = manifest.modules;
+      const [{
+        name,
+        tagName,
+      }] = element.declarations;
+
+      expect(spy).toHaveBeenCalled();
+      expect(manifest.modules.length).to.equal(1);
+      expect(name).to.equal('MyElement');
+      expect(tagName).to.equal('my-element');
     });
   });
 });

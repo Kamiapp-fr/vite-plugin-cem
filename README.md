@@ -180,6 +180,18 @@ interface CreateManifestOptions {
    * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
    */
   plugins?: Plugin[], 
+  /**
+   * Custom override for source file creation in module generation.
+   * For more details on this feature, refer to:
+   *
+   * https://custom-elements-manifest.open-wc.org/analyzer/plugins/authoring/#overriding-sourcefile-creation
+   *
+   * @param {Object} options - The options object.
+   * @param {Typescript} options.ts - The TypeScript instance.
+   * @param {string[]} options.globs - An array of glob patterns.
+   * @returns {SourceFile[]} An array of SourceFile.
+   */
+  overrideModuleCreation?: ({ ts, globs }: { ts: Typescript, globs: string[] }) => SourceFile[];
 }
 ```
 
