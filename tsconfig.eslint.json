@@ -10,6 +10,7 @@
     "example/lit-ts",
     "example/vanilla-ts",
     "example/storybook",
+    "example/lit-expanded-types",
     "virtual.d.ts"
   ],
   "exclude": ["node_modules"]
