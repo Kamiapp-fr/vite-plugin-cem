@@ -10,12 +10,12 @@
   },
   "devDependencies": {
     "cem-plugin-jsdoc-example": "^0.0.9",
-    "typescript": "^5.3.2",
-    "vite": "^5.0.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
     "vite-plugin-cem": "file:../.."
   },
   "dependencies": {
     "api-viewer-element": "^1.0.0-pre.8",
-    "lit": "^3.1.0"
+    "lit": "^3.1.2"
   }
 }
