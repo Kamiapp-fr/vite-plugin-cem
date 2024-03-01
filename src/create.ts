@@ -9,6 +9,9 @@ import {
   fastPlugin,
   ts,
 } from '@custom-elements-manifest/analyzer/src/browser-entrypoint.js';
+import type { SourceFile } from 'typescript';
+
+type Typescript = typeof import('typescript');
 
 interface CreateManifestOptions {
   /**
@@ -39,6 +42,8 @@ interface CreateManifestOptions {
    * https://custom-elements-manifest.open-wc.org/analyzer/plugins/intro/
    */
   plugins?: Plugin[],
+
+  overrideModuleCreation?: ({ ts, globs }: { ts: Typescript, globs: string[] }) => SourceFile[];
 }
 
 function createModule(path: string) {
@@ -59,9 +64,14 @@ function createManifest(paths: string[], {
   catalyst,
   dev = false,
   plugins = [],
+  overrideModuleCreation,
 }: CreateManifestOptions = {}) {
-  const files = paths.map((p) => glob.sync(p)).flat();
-  const modules = files.map(createModule);
+  const useCustomModuleCreation = overrideModuleCreation !== undefined;
+  const files = paths.map((p) => glob.sync(p, { absolute: useCustomModuleCreation })).flat();
+
+  const modules = useCustomModuleCreation
+    ? overrideModuleCreation({ ts, globs: files })
+    : files.map(createModule);
 
   if (lit) {
     plugins.push(...litPlugin());
