@@ -45,6 +45,7 @@
     "vite": "^5.1.4"
   },
   "devDependencies": {
+    "@types/glob": "^8.1.0",
     "@types/node": "^20.11.24",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
