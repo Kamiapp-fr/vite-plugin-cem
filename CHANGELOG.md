@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2024-03-01
+### Added
+- Introducing the `overrideModuleCreation` option for personalized [sourceFile creation](https://custom-elements-manifest.open-wc.org/analyzer/plugins/authoring/#overriding-sourcefile-creation). ([#8](https://github.com/Kamiapp-fr/vite-plugin-cem/issues/8))
+
 ## [0.6.0] - 2023-11-23
 ### Added
-- Introduced virtual import for the `custom-elements.json`, allowing seamless integration into your codebase.
+- Introduced virtual import for the `custom-elements.json`, allowing seamless integration into your codebase. ([#6](https://github.com/Kamiapp-fr/vite-plugin-cem/issues/6))
 
 ### Changed
 - Upgrade `vite` to v5.0.2
@@ -56,7 +60,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In `development` serve the manifest and rebuild it on the fly.
 - In `production` build the final manifest.
 
-[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.3.0...v0.4.0
