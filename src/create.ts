@@ -64,7 +64,7 @@ function createModule(path: string) {
     source,
     ts.ScriptTarget.ES2015,
     true,
-  );
+  ) as SourceFile;
 }
 
 function createManifest(paths: string[], {
