@@ -5,6 +5,7 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'istanbul',
+      exclude: ['example/**', 'scripts/**', '*.cjs'],
     },
   },
 });
