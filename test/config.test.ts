@@ -5,7 +5,7 @@ import {
   it,
   vi,
 } from 'vitest';
-import { loadConfigFromFile } from '../src/config';
+import { loadConfigFromFile, loadOptions } from '../src/config';
 
 describe('#config', () => {
   const current = process.cwd();
@@ -41,6 +41,68 @@ describe('#config', () => {
       expect(custom).toHaveProperty('globs');
       expect(custom).toHaveProperty('litelement');
       expect(custom).toHaveProperty('packagejson');
+    });
+  });
+
+  describe('#loadOptions', () => {
+    it('should load the default options', async () => {
+      const options = await loadOptions({});
+
+      expect(options).toMatchObject({
+        endpoint: '/custom-elements.json',
+        output: 'custom-elements.json',
+        packageJson: false,
+        files: [],
+      });
+    });
+
+    it('should load options pass as params', async () => {
+      const options = await loadOptions({
+        files: ['./test.ts'],
+        lit: true,
+        packageJson: true,
+      });
+
+      expect(options).toMatchObject({
+        endpoint: '/custom-elements.json',
+        output: 'custom-elements.json',
+        files: ['./test.ts'],
+        packageJson: true,
+        lit: true,
+      });
+    });
+
+    it('should load options from the config file', async () => {
+      vi.spyOn(process, 'cwd').mockReturnValue(`${current}/example/vanilla-ts`);
+
+      const options = await loadOptions({});
+
+      expect(options).toMatchObject({
+        endpoint: '/custom-elements.json',
+        output: 'custom-elements.json',
+        files: ['src/title-element.ts'],
+        lit: true,
+        packageJson: false,
+      });
+
+      expect(options.plugins![0].name).toBe('jsdoc-example');
+    });
+
+    it('should merge options from the config file and from the params', async () => {
+      vi.spyOn(process, 'cwd').mockReturnValue(`${current}/example/lit-ts`);
+
+      const options = await loadOptions({
+        endpoint: '/cem.json',
+        config: 'cem.config.mjs',
+      });
+
+      expect(options).toMatchObject({
+        endpoint: '/cem.json',
+        output: 'custom-elements.json',
+        files: ['./src/my-element.ts'],
+        lit: true,
+        packageJson: true,
+      });
     });
   });
 });
