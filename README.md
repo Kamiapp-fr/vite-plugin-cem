@@ -79,6 +79,33 @@ export default defineConfig({
 
 > Yes, it's *pluginsception* !
 
+### Config File
+
+Similar to the `@custom-elements-manifest/analyzer`, you can utilize a configuration file. 
+By default, it will attempt to load the `custom-elements-manifest.config.mjs` file located at the root of your project.
+
+```typescript
+// It will attempt to load the `custom-elements-manifest.config.mjs` file by default
+export default defineConfig({
+  plugins: [
+    VitePluginCustomElementsManifest()
+  ]
+})
+```
+
+You also have the option to specify a custom configuration file using the `config` option.
+
+```typescript
+// Here, it will attempt to load the `cem.config.mjs` file
+export default defineConfig({
+  plugins: [
+    VitePluginCustomElementsManifest({
+      config: 'cem.config.mjs'
+    })
+  ]
+})
+```
+
 ### Virtual import
 
 You can employ virtual import to seamlessly utilize the manifest built into your code. To achieve this, simply include the following line: 
@@ -149,6 +176,11 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
    * @default [] 
    */
   files?: string[],
+  /**
+   * Defines the name of your config file *(optional)*
+   * @default 'custom-elements-manifest.config.mjs'
+   */
+  config?: string,
 }
 
 interface CreateManifestOptions {
