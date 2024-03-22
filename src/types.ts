@@ -27,6 +27,8 @@ export interface VitePluginCustomElementsManifestOptions extends CreateManifestO
      * @default []
      */
   files?: string[],
+
+  config?: string,
 }
 
 export interface CreateManifestOptions {
@@ -70,4 +72,22 @@ export interface CreateManifestOptions {
      * @returns {SourceFile[]} An array of SourceFile.
      */
   overrideModuleCreation?: ({ ts, globs }: { ts: Typescript, globs: string[] }) => SourceFile[];
+}
+
+export interface ConfigFileOptions {
+  globs: string[],
+  exclude: string[],
+  outdir: string,
+  dev: boolean,
+  watch: boolean,
+  dependencies: boolean,
+  packagejson: boolean,
+
+  litelement: boolean,
+  catalyst: boolean,
+  fast: boolean,
+  stencil: boolean,
+
+  plugins: Array<() => Plugin>,
+  overrideModuleCreation: ({ ts, globs }: { ts: Typescript, globs: string[] }) => SourceFile[];
 }

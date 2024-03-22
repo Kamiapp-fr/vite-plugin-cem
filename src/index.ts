@@ -5,16 +5,21 @@ import {
 import { writeFileSync, mkdirSync, readFileSync } from 'fs';
 import { createManifest } from './create';
 import { VitePluginCustomElementsManifestOptions } from './types';
+import { loadOptions } from './config';
 
-function VitePluginCustomElementsManifest({
-  endpoint = '/custom-elements.json',
-  output = 'custom-elements.json',
-  packageJson = false,
-  files = [],
-  ...createManifestOptions
-}: VitePluginCustomElementsManifestOptions = {}): Plugin {
+async function VitePluginCustomElementsManifest(
+  options: VitePluginCustomElementsManifestOptions = {},
+): Promise<Plugin> {
   const virtualModuleId = 'virtual:vite-plugin-cem/custom-elements-manifest';
   const resolvedVirtualModuleId = `\0${virtualModuleId}`;
+
+  const {
+    endpoint,
+    output,
+    packageJson,
+    files,
+    ...createManifestOptions
+  } = await loadOptions(options);
 
   return {
     name: 'vite-plugin-custom-elements-manifest',
