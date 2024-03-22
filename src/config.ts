@@ -31,6 +31,7 @@ export async function loadOptions({
 
   const {
     globs = files,
+    packagejson = packageJson,
     dev = createManifestOptions.dev,
     litelement: lit = createManifestOptions.lit,
     catalyst = createManifestOptions.catalyst,
@@ -43,14 +44,14 @@ export async function loadOptions({
   return {
     endpoint,
     output,
-    files: globs,
     dev,
-    packageJson,
     lit,
     catalyst,
     fast,
     stencil,
     plugins,
+    files: globs,
+    packageJson: packagejson,
     overrideModuleCreation,
   };
 }
