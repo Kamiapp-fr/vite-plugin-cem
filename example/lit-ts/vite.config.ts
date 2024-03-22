@@ -14,9 +14,7 @@ export default defineConfig({
   },
   plugins: [
     VitePluginCustomElementsManifest({
-      files: ['./src/my-element.ts'],
-      lit: true,
-      packageJson: true,
+      config: 'cem.config.mjs',
     }),
   ],
 });

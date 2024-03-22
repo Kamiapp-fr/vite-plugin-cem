@@ -4,12 +4,6 @@ import { jsdocExamplePlugin } from 'cem-plugin-jsdoc-example';
 
 export default defineConfig({
   plugins: [
-    VitePluginCustomElementsManifest({
-      files: ['./src/title-element.ts'],
-      lit: true,
-      plugins: [
-        jsdocExamplePlugin(),
-      ]
-    })
+    VitePluginCustomElementsManifest()
   ]
 })
