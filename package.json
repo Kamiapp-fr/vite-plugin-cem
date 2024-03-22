@@ -39,22 +39,22 @@
   },
   "homepage": "https://github.com/Kamiapp-fr/vite-plugin-cem#readme",
   "dependencies": {
-    "@custom-elements-manifest/analyzer": "^0.9.3",
+    "@custom-elements-manifest/analyzer": "^0.9.4",
     "glob": "^8.1.0",
-    "typescript": "~5.3.3",
-    "vite": "^5.1.4"
+    "typescript": "~5.4.3",
+    "vite": "^5.2.2"
   },
   "devDependencies": {
     "@types/glob": "^8.1.0",
-    "@types/node": "^20.11.24",
+    "@types/node": "^20.11.30",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "@typescript-eslint/parser": "^6.12.0",
-    "@vitest/coverage-istanbul": "^1.3.1",
+    "@typescript-eslint/eslint-plugin": "~6.12.0",
+    "@typescript-eslint/parser": "~6.12.0",
+    "@vitest/coverage-istanbul": "~1.4.0",
     "eslint": "^8.57.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-airbnb-typescript": "~17.1.0",
     "supertest": "^6.3.4",
     "tsup": "^8.0.2",
-    "vitest": "^1.3.1"
+    "vitest": "^1.4.0"
   }
 }
