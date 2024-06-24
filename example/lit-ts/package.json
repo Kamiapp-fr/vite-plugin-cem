@@ -17,11 +17,11 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
-    "lit": "^3.1.2",
+    "lit": "^3.1.4",
     "vite-plugin-cem": "file:../.."
   },
   "devDependencies": {
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1"
   }
 }
