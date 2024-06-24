@@ -8,21 +8,21 @@
     "build": "storybook build"
   },
   "dependencies": {
-    "cem-plugin-better-lit-types": "^0.2.0",
-    "lit": "^3.1.2",
+    "cem-plugin-better-lit-types": "^0.2.1",
+    "lit": "^3.1.4",
     "vite-plugin-cem": "file:../.."
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.17",
-    "@storybook/addon-links": "^7.6.17",
-    "@storybook/blocks": "^7.6.17",
-    "@storybook/web-components": "^7.6.17",
-    "@storybook/web-components-vite": "^7.6.17",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^7.6.17",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/web-components": "^8.1.10",
+    "@storybook/web-components-vite": "^8.1.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.1.10",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1"
   },
   "customElements": "storybook-static/custom-elements.json"
 }
