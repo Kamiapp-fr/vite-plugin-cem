@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.2] - 2025-01-10
+### Fixed
+- Upgrades dependencies:
+  - @custom-elements-manifest/analyzer to **0.10.4**
+  - typescript to **5.7.3**
+- Marked `vite` as a `peerDependency`.
+
 ## [0.8.1] - 2024-06-24
 ### Fixed
 - Upgrades dependencies:
@@ -71,7 +78,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In `development` serve the manifest and rebuild it on the fly.
 - In `production` build the final manifest.
 
-[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.2...HEAD
+[0.8.2]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.6.0...v0.7.0
