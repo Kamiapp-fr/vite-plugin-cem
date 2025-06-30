@@ -1,13 +1,14 @@
-import { ConfigFileOptions, VitePluginCustomElementsManifestOptions } from './types';
 import { join } from 'path';
 import { pathToFileURL } from 'url';
+import { ConfigFileOptions, VitePluginCustomElementsManifestOptions } from './types';
 
 export async function loadConfigFromFile(name: string = 'custom-elements-manifest.config.mjs') {
   try {
     const configPath = join(process.cwd(), name);
     const fileUrl = pathToFileURL(configPath).href;
     const config = await import(fileUrl);
-    return config.default as ConfigFileOptions
+
+    return config.default as ConfigFileOptions;
   } catch (error) {
     return undefined;
   }
