@@ -25,7 +25,7 @@ describe('#VitePluginCustomElementsManifest', () => {
 
       await server.listen();
 
-      const { text } = await request(server!.httpServer).get('/custom-elements.json');
+      const { text } = await request(server!.httpServer!).get('/custom-elements.json');
       const manifest = JSON.parse(text);
 
       expect(manifest.modules.length).to.equal(0);
@@ -47,7 +47,7 @@ describe('#VitePluginCustomElementsManifest', () => {
 
       await server.listen();
 
-      const { text } = await request(server!.httpServer).get('/custom-elements.json');
+      const { text } = await request(server!.httpServer!).get('/custom-elements.json');
       const manifest = JSON.parse(text);
       const [element] = manifest.modules;
       const [{
@@ -81,7 +81,7 @@ describe('#VitePluginCustomElementsManifest', () => {
 
       await server.listen();
 
-      const { text } = await request(server!.httpServer).get('/my-custom-endpoint');
+      const { text } = await request(server!.httpServer!).get('/my-custom-endpoint');
       const manifest = JSON.parse(text);
       const [element] = manifest.modules;
       const [{
