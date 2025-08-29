@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.4] - 2025-08-29
+### Fixed
+- Resolved issues with the **Stencil plugin**. By @Graphmaxer ([#15](https://github.com/Kamiapp-fr/vite-plugin-cem/issues/15))
+
 ## [0.8.3] - 2025-07-01
 ### Fixed
 - Resolved **Windows path resolution** issue. By @JamesIves ([#13](https://github.com/Kamiapp-fr/vite-plugin-cem/issues/13))
@@ -83,7 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In `development` serve the manifest and rebuild it on the fly.
 - In `production` build the final manifest.
 
-[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.3...HEAD
+[Unreleased]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.4...HEAD
+[0.8.4]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.2...v0.8.3
 [0.8.2]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/Kamiapp-fr/vite-plugin-cem/compare/v0.8.0...v0.8.1
