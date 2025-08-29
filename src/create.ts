@@ -47,7 +47,8 @@ function createManifest(paths: string[], {
   }
 
   if (stencil) {
-    plugins.push(...stencilPlugin());
+    // Note: Only Stencil is not an array of plugins
+    plugins.push(stencilPlugin());
   }
 
   if (catalyst) {
