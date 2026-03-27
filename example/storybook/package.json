@@ -22,7 +22,7 @@
     "react-dom": "^18.3.1",
     "storybook": "^8.1.10",
     "typescript": "^5.5.2",
-    "vite": "^5.3.1"
+    "vite": "^8.0.3"
   },
   "customElements": "storybook-static/custom-elements.json"
 }
